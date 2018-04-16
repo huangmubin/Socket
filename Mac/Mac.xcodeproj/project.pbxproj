@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C2B26722020677E007D2BFB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B26712020677E007D2BFB /* main.swift */; };
+		9C5A8DB52022BCE800511507 /* cSocket_UDP.c in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A8DB32022BCE800511507 /* cSocket_UDP.c */; };
 		9C7AF7432021B3780044F477 /* cSocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AF7412021B3780044F477 /* cSocket.c */; };
 		9C7AF7452021BDF60044F477 /* cSocket_Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AF7442021BDF60044F477 /* cSocket_Interface.swift */; };
 		9C7AF7482021CA820044F477 /* cSocket_TCP.c in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AF7462021CA820044F477 /* cSocket_TCP.c */; };
@@ -29,6 +30,8 @@
 		9C2B266E2020677E007D2BFB /* Mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Mac; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C2B26712020677E007D2BFB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9C2B26792020679D007D2BFB /* Mac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mac-Bridging-Header.h"; sourceTree = "<group>"; };
+		9C5A8DB32022BCE800511507 /* cSocket_UDP.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cSocket_UDP.c; sourceTree = "<group>"; };
+		9C5A8DB42022BCE800511507 /* cSocket_UDP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cSocket_UDP.h; sourceTree = "<group>"; };
 		9C7AF7412021B3780044F477 /* cSocket.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cSocket.c; sourceTree = "<group>"; };
 		9C7AF7422021B3780044F477 /* cSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cSocket.h; sourceTree = "<group>"; };
 		9C7AF7442021BDF60044F477 /* cSocket_Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cSocket_Interface.swift; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				9C7AF7422021B3780044F477 /* cSocket.h */,
 				9C7AF7462021CA820044F477 /* cSocket_TCP.c */,
 				9C7AF7472021CA820044F477 /* cSocket_TCP.h */,
+				9C5A8DB32022BCE800511507 /* cSocket_UDP.c */,
+				9C5A8DB42022BCE800511507 /* cSocket_UDP.h */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 			files = (
 				9C7AF7482021CA820044F477 /* cSocket_TCP.c in Sources */,
 				9C7AF7452021BDF60044F477 /* cSocket_Interface.swift in Sources */,
+				9C5A8DB52022BCE800511507 /* cSocket_UDP.c in Sources */,
 				9C7AF7432021B3780044F477 /* cSocket.c in Sources */,
 				9C2B26722020677E007D2BFB /* main.swift in Sources */,
 			);

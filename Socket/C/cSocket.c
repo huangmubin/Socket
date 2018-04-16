@@ -88,3 +88,67 @@ int cSocket_shutdown(int socket, int howto) {
     return shutdown(socket, howto);
 }
 
+// MARK: - Send
+
+size_t cSocket_send(int socket, const void * buffer, size_t size, int sec, int usec, int flags) {
+    if (sec > 0 || usec > 0) {
+        fd_set socket_fd_set;
+        struct timeval tv;
+        tv.tv_sec = sec;
+        tv.tv_usec = usec;
+        
+        FD_ZERO(&socket_fd_set);
+        FD_SET(socket, &socket_fd_set);
+        int ret = select(socket + 1, NULL, &socket_fd_set, NULL, &tv);
+        
+        if (ret < 0) {
+            printf("send select error: %s; sec = %d, usec = %d;\n", buffer, sec, usec);
+            perror("send select error");
+            return ERROR_SELECT; // select 出错
+        } else if (ret == 0) {
+            printf("send timeout error: %s; sec = %d, usec = %d;\n", buffer, sec, usec);
+            perror("send timeout error");
+            return ERROR_TIMEOUT; // select 超时
+        }
+    }
+    
+    size_t w_size = send(socket, buffer, size, flags);
+    if (w_size != size) {
+        printf("send error: %s; sec = %d, usec = %d;\n", buffer, sec, usec);
+        perror("send error");
+        return ERROR_WRITE;
+    } else {
+        return w_size;
+    }
+}
+
+// MARK: - Recv
+
+size_t cSocket_recv(int socket, void * buffer, size_t size, int sec, int usec, int flags) {
+    if (sec > 0 || usec > 0) {
+        fd_set socket_fd_set;
+        struct timeval tv;
+        tv.tv_sec = sec;
+        tv.tv_usec = usec;
+        
+        FD_ZERO(&socket_fd_set);
+        FD_SET(socket, &socket_fd_set);
+        int ret = select(socket + 1, &socket_fd_set, NULL, NULL, &tv);
+        
+        if (ret < 0) {
+            perror("recv select error");
+            return ERROR_SELECT; // select 出错
+        } else if (ret == 0) {
+            perror("recv timeout error");
+            return ERROR_TIMEOUT; // select 超时
+        }
+    }
+    
+    size_t r_size = recv(socket, buffer, size, flags);
+    if (r_size == -1) {
+        perror("recv error");
+        return ERROR_WRITE;
+    } else {
+        return r_size;
+    }
+}
